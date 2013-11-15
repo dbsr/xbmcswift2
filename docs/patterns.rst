@@ -220,7 +220,7 @@ Here is a quick example of updating the context menu.
     from xbmcswift2 import actions
 
     @plugin.url('/favorites/add/<url>')
-    def add_to_favs(url):
+    def add_to_favorites(url):
         # this is a background view
         ...
 
