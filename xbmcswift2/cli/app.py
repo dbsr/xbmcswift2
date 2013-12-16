@@ -90,11 +90,13 @@ class PluginManager(object):
     '''
 
     @classmethod
-    def load_plugin_from_addonxml(cls, mode, url):
+    def load_plugin_from_addonxml(cls, mode, url=None, xml_path=None):
         '''Attempts to import a plugin's source code and find an instance of
         :class:`~xbmcswif2.Plugin`. Returns an instance of PluginManager if
         succesful.
         '''
+        if xml_path:
+            os.chpwd(xml_path)
         cwd = os.getcwd()
         sys.path.insert(0, cwd)
         module_name = get_addon_module_name(os.path.join(cwd, 'addon.xml'))
