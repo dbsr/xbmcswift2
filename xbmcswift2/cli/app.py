@@ -98,7 +98,10 @@ class PluginManager(object):
         cwd = os.getcwd()
         sys.path.insert(0, cwd)
         module_name = get_addon_module_name(os.path.join(cwd, 'addon.xml'))
+        mock = os.path.join(os.path.dirname(os.path.realpath(__file__)), '../mockxbmc')
+        sys.path.append(mock)
         addon = __import__(module_name)
+        sys.path.remove(mock)
 
         # Find the first instance of xbmcswift2.Plugin
         try:
