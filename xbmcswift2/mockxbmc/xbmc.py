@@ -44,7 +44,11 @@ def translatePath(path):
         'screenshots', 'musicplaylists', 'videoplaylists', 'cdrips', 'skin',
     ]
 
-    assert path.startswith('special://'), 'Not a valid special:// path.'
+    # compatability fix for (older) addons not importing xbmc from xbmcswift2
+    try:
+        assert path.startswith('special://'), 'Not a valid special:// path.'
+    except AssertionError:
+        return
     parts = path.split('/')[2:]
     assert len(parts) > 1, 'Need at least a single root directory'
     assert parts[0] in valid_dirs, '%s is not a valid root dir.' % parts[0]
