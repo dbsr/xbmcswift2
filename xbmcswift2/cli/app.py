@@ -96,7 +96,7 @@ class PluginManager(object):
         succesful.
         '''
         if xml_path:
-            os.chpwd(xml_path)
+            os.chdir(xml_path)
         cwd = os.getcwd()
         sys.path.insert(0, cwd)
         module_name = get_addon_module_name(os.path.join(cwd, 'addon.xml'))
